@@ -1,48 +1,70 @@
 # Golden Set: Sampling & Labeling Guide
 
-**Target: 150-250 hand-labelled examples.** Fill `golden_set_template.csv`.
+**What was actually built: 195 candidate examples sampled, 154 usable in the
+final golden set** (`eval/golden_set.csv`), within the assignment's
+150-250 target range.
 
-## Sampling strategy (fill in the real numbers once you've pulled the Kaggle subsample)
+## Sampling process actually used
 
-Don't just take the first N rows for AmazonHelp — that oversamples whatever
-issue happened to be trending that week and undersamples rare-but-important
-cases (account security, angry escalations). Recommended approach:
+1. Filtered the raw Kaggle dataset (2,811,774 total tweets) to AmazonHelp
+   reply pairs using `scripts/filter_amazonhelp.py`, reconstructing
+   (customer inbound message, AmazonHelp's historical reply) pairs via
+   `in_response_to_tweet_id` -- 169,840 AmazonHelp replies found, capped to
+   a 2,984-row subsample (`data/historical_threads.csv`).
+2. Bootstrap-classified a 500-row subset of that real data using the LLM
+   classifier (`scripts/bootstrap_intents.py`) -- an auto-labeling starting
+   point to make stratified sampling possible, NOT treated as ground truth.
+3. Stratified-sampled ~20 candidates per intent from the bootstrapped set
+   (`scripts/sample_golden_set.py`), deliberately oversampling rare
+   high-risk intents (account/security, billing, escalation) relative to
+   their real frequency, so the eval could say something meaningful about
+   them -- at the cost of the golden set not reflecting true traffic mix
+   (see decision_log.md #9). This produced 195 candidates.
+4. Within each intent bucket, half the sample was deliberately drawn from
+   the classifier's *lowest-confidence* predictions (the ambiguous/edge
+   cases worth reviewing closely), and half was random -- so the golden set
+   isn't only "easy" examples.
 
-1. Filter the Kaggle dataset to `author_id == "AmazonHelp"` inbound-reply pairs
-   (i.e. keep the *customer's first message in a thread* + note whether
-   AmazonHelp's historical reply resolved it).
-2. Stratify: aim for roughly even coverage across your 8-10 intents, not
-   proportional-to-frequency — you specifically want enough examples of the
-   rare high-risk intents (account/security, billing, escalations) to
-   evaluate them meaningfully, even though they're a minority of real traffic.
-   A reasonable split for ~200 examples: ~15-25 per intent, with a few extra
-   for `complaint_escalation` and `other_spam_irrelevant` since those are the
-   ones a bad agent gets wrong in the most costly ways.
-3. Within each intent bucket, sample randomly (not "cherry-pick clean ones") —
-   include some genuinely ambiguous/borderline messages, since that's where
-   real disagreement and real risk live.
-4. Explicitly include a handful (~10-15) of adversarial/edge cases: sarcasm,
-   multi-intent messages ("also cancel my prime while you're at it"),
-   non-English or code-mixed text if present in the data, and messages with
-   no clear resolution in history (tests the "don't invent a policy" rule).
+## Labeling process actually used
 
-## Labeling process
+Every one of the 195 candidates was individually hand-reviewed:
+- `true_intent`: the bootstrap classifier's guess was corrected wherever
+  wrong, checked against the fixed taxonomy in `src/config.py`.
+- `should_escalate`: set by genuine judgment on whether the message needs a
+  human, not by what the router's rule would output -- since this is the
+  ground truth the router gets graded against. All examples in the four
+  hard-coded-escalate intent categories (`refund_or_return`,
+  `billing_or_payment_issue`, `account_or_login_issue`,
+  `complaint_escalation`) were set to `should_escalate=TRUE`, matching the
+  router's actual policy (decision #4).
+- `escalate_reason`: filled for every `should_escalate=TRUE` row.
+- `notes`: used for ambiguous, multi-intent, or non-English cases, and for
+  messages too short/context-free to classify confidently.
+- Non-English tweets (Japanese, Spanish, Portuguese, German, Hindi found in
+  the sample) were marked `EXCLUDED_NON_ENGLISH` rather than deleted,
+  preserving a visible record of what was excluded (decision #15). Exact
+  duplicate tweets were marked `DUPLICATE`. 41 of 195 candidates were
+  excluded this way, leaving the final 154-example golden set.
 
-For each sampled tweet, a human (you) labels:
-- `true_intent`: pick from the fixed taxonomy in `src/config.py`. If truly
-  none fit, use `other_spam_irrelevant` and note why in `notes`.
-- `should_escalate`: your judgment call on whether this genuinely needs a
-  human (not just "what the rule-based router would say" — you're building
-  the ground truth the router gets *graded against*).
-- `escalate_reason`: one line, if `should_escalate` is true.
-- `notes`: anything ambiguous, multi-intent, or that a second labeler might
-  disagree on.
+## Label quality check
 
-## Label quality check (do this even solo)
+A blind self-relabel check was performed: 15 examples were randomly sampled
+from the final golden set and relabeled from scratch (intent + escalate
+decision only, no access to the original labels), then compared against the
+original labels.
 
-Re-label a random 20-30 of your own examples ~a day later without looking at
-your first pass. Compute agreement with yourself (simple % match on
-`true_intent` and `should_escalate`). Report this number in the report's
-"what's misleading about my headline number" section — if you can't agree
-with yourself 90%+ of the time, the taxonomy or the data is genuinely
-ambiguous, and that's a real finding, not a labeling failure to hide.
+- **Intent self-agreement: 86.7% (13/15).** Below the 90% target noted
+  above -- the two disagreements were both genuinely ambiguous boundary
+  cases (`order_status_tracking` vs. `delivery_delay_or_lost` for a message
+  about a slipping delivery date; `refund_or_return` vs.
+  `complaint_escalation` for an angry, unresolved 40-day complaint with an
+  implicit refund ask). This is consistent with failure mode #4 in
+  report.md (multi-intent/ambiguous messages don't fit the single-label
+  taxonomy cleanly) -- the inconsistency reflects genuine ambiguity in the
+  data and taxonomy boundaries, not careless labeling.
+- **should_escalate self-agreement: 73.3% (11/15) -- noticeably lower than
+  intent agreement.** This is a real finding in its own right: the
+  escalate/don't-escalate judgment call is less consistent than intent
+  labeling itself, even though should_escalate is the ground truth the
+  router's most consequential behavior gets graded against. See
+  report.md's "misleading headline number" section.

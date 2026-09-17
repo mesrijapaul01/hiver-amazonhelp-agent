@@ -58,7 +58,7 @@ in this repo, so you don't need to re-download or re-filter anything to
 reproduce the headline numbers.
 
 ```bash
-# 1. Run the agent over the golden set
+# 1. Run the agent over the golden set (add --limit 30 for a quick subsample run)
 python scripts/run_pipeline.py \
     --input eval/golden_set.csv \
     --output outputs/agent_results.csv
@@ -74,7 +74,7 @@ python scripts/run_baseline.py --input eval/golden_set.csv --output outputs/simp
 python eval/metrics.py --predictions outputs/trivial_results.csv --golden eval/golden_set.csv
 python eval/metrics.py --predictions outputs/simple_results.csv --golden eval/golden_set.csv
 
-# 4. LLM-judge reply quality
+# 4. LLM-judge reply quality (add --limit 30 for a quick subsample run)
 python eval/llm_judge.py --predictions outputs/agent_results.csv --out outputs/judged.csv
 
 # 5. Judge-human agreement check (a pre-filled 25-example human-scored
@@ -85,12 +85,16 @@ python scripts/sample_for_human_scoring.py --input outputs/judged.csv --output e
 python eval/llm_judge.py --agreement outputs/judged.csv --human eval/human_scores_template.csv
 ```
 
-Steps 1-4 run in well under 15 minutes (mostly LLM API latency, ~154 calls
-each for steps 1 and 4; steps 3 are instant, no API calls). Step 5's
-hand-scoring is a manual step, not something the 15-minute reproduction
-window is meant to cover -- a completed sample is already included so the
-agreement numbers in `report.md` can be reproduced by running the last
-command alone.
+Steps 1-4 run in well under 15 minutes for a quick sanity-check subsample
+(recommended: add `--limit 30` to the input in steps 1 and 4 below). Running
+the full 154-example golden set for both the agent pipeline and the LLM
+judge (i.e. reproducing the exact numbers reported in `report.md`) involves
+~300 sequential API calls total and takes meaningfully longer than 15
+minutes on Groq's free tier (closer to 30-60 minutes depending on API
+load) -- the assignment's own rules note that a subsample is expected and
+encouraged, so I'd suggest reviewers use the `--limit` flag for a fast
+verification run, and treat the full numbers in `report.md` as reproducible
+but not necessarily within the 15-minute window if run end-to-end.
 
 ## Rebuilding the golden set / historical corpus from scratch (optional)
 

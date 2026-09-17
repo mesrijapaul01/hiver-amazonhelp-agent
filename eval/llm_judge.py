@@ -49,8 +49,10 @@ Draft reply: \"\"\"{reply}\"\"\""""
     return call_llm_json(model=JUDGE_MODEL, system=JUDGE_SYSTEM, user=user, max_tokens=250)
 
 
-def run_judge(predictions_path: str, out_path: str):
+def run_judge(predictions_path: str, out_path: str, limit: int = None):
     df = pd.read_csv(predictions_path)
+    if limit:
+        df = df.head(limit)
     scores = []
     for i, row in df.iterrows():
         print(f"[{i+1}/{len(df)}] judging...", file=sys.stderr)
@@ -132,12 +134,13 @@ def main():
     ap.add_argument("--out")
     ap.add_argument("--agreement", help="path to judged CSV, to run agreement check instead")
     ap.add_argument("--human", help="path to human_scores.csv, used with --agreement")
+    ap.add_argument("--limit", type=int, default=None, help="only judge first N rows (fast sanity-check runs)")
     args = ap.parse_args()
 
     if args.agreement:
         run_agreement(args.agreement, args.human)
     else:
-        run_judge(args.predictions, args.out)
+        run_judge(args.predictions, args.out, limit=args.limit)
 
 
 if __name__ == "__main__":

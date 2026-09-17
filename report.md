@@ -157,6 +157,19 @@ intervals on the reported precision/recall for the smaller categories are
 wide, and a handful of different labeling calls could shift per-intent
 numbers noticeably.
 
+**My own labeling is not perfectly self-consistent, and the escalation
+judgment is less consistent than intent labeling.** A blind self-relabel
+check on 15 randomly sampled golden-set examples found 86.7% intent
+agreement with my own original labels, and only 73.3% agreement on
+`should_escalate` -- notably lower. The intent disagreements were both
+genuinely ambiguous boundary cases (consistent with failure mode #4 above),
+which is a real finding about the taxonomy, not just noise. The lower
+escalation agreement is more concerning: `should_escalate` is the exact
+ground truth the router's highest-stakes behavior is graded against, and if
+I don't consistently agree with myself on it, the escalation precision/recall
+numbers in section 2 carry real uncertainty beyond what the point estimates
+suggest.
+
 **The golden set's intent distribution does not reflect real traffic.** It
 was deliberately stratified to oversample rare high-risk intents (decision
 #9), so the 77.3% headline accuracy is not what accuracy on the brand's
@@ -177,7 +190,10 @@ distribution intentionally weighted toward the hard, high-stakes cases.
   the golden set's actual false-auto-handle rate rather than using an
   unvalidated guess.
 - Get a second human labeler on a subset of the golden set and compute real
-  inter-annotator agreement, not just self-consistency.
+  inter-annotator agreement -- a solo self-relabel check was done (86.7%
+  intent / 73.3% escalate self-agreement, see section 4), but a genuinely
+  independent second labeler is the real next step, especially given how
+  much lower the escalation agreement was than intent agreement.
 - Investigate and fix the LLM judge's weak agreement with human scoring --
   likely next steps: revise the judge rubric prompt to be more specific and
   less lenient, try a different/larger judge model, or score on a coarser

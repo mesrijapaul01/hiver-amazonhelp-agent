@@ -1,0 +1,16 @@
+id,customer_tweet,relabel_intent,relabel_should_escalate
+golden_0004,@115823 I want my amazon payments account CLOSED.  dm me please.,cancellation_request ,TRUE
+golden_0065,@AmazonHelp I already emailed yâall.,complaint_escalation,TRUE
+golden_0008,@115851 my Amazonid is __email__ is blocked since 3months please unblock it.,account_or_login_issue,TRUE
+golden_0152,"@AmazonHelp Thanks, I called. The agent says the order has been received, but not shipped. Still anticipate a Friday delivery",order_status_tracking,FALSE
+golden_0031,Haha @117634 has been sneakily charging me $9.99 SINCE FEBRUARY for a service I never useð©ðð $90 gone!!! Thanks @AmazonHelp,billing_or_payment_issue,TRUE
+golden_0171,@AmazonHelp Please call me,other_spam_irrelevant,FALSE
+golden_0184,"Worst experience in shopping no product no refund , been 40 days. F&amp;@694 it @115821",complaint_escalation,TRUE
+golden_0088,Ordered cases for our new iPhone X and @115821 sent me iPhone 8 cases for BOTH ones. NOT THE SAME PHONE! #pissed,damaged_or_wrong_item,TRUE
+golden_0091,#Amazon who packages these games. Ordered to games and both came rattling inside their cases. One is broken. Games may have suffered scratches. @115821 https://t.co/KqpOkpLeP8,damaged_or_wrong_item,TRUE
+golden_0158,@AmazonHelp I'm UK based. Are the contact details the same?,general_product_question,FALSE
+golden_0109,@AmazonHelp 408-9273159-6369903.replacement ordered from 24th Oct.no1 contact me.Really worst courier service from Amazon,delivery_delay_or_lost,TRUE
+golden_0131,@AmazonHelp if I add another adult to my Amazon household (with their own account) can they see my wishlists/photos/order history?,general_product_question,FALSE
+golden_0075,@AmazonHelp Sorry to have to say this. But you all are idiots. Once more email completely ignoring my query and giving template reply,complaint_escalation,TRUE
+golden_0018,"@AmazonHelp Still not working.  They sent me a link to reset the password, try and sign in with new password and still locked out.",account_or_login_issue,TRUE
+golden_0140,@115850 ur app shows expected delivery on 25 th on 30th( prepaid orders).it's a regular customer realising not to buy anything further.,delivery_delay_or_lost,TRUE
