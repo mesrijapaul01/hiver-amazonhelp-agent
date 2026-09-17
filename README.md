@@ -7,14 +7,11 @@ reason for every decision.
 
 Built for the Hiver SDE Intern take-home assignment.
 
-## Status / what's real vs placeholder
-
-**`data/historical_threads.csv` currently contains 50 SYNTHETIC example
-threads I wrote by hand, not the real Kaggle dataset.** This was deliberate:
-it let me build and test the full pipeline immediately without waiting on a
-Kaggle download inside a sandboxed environment. Before generating the
-headline numbers in `report.md`, this file needs to be replaced with a real
-subsample -- see "Using the real dataset" below.
+**Headline results** (154-example hand-labeled golden set): 77.3% intent
+accuracy, 85.5% escalation precision, 76.8% escalation recall, vs. 14.3% /
+44.8% / 100% for a trivial always-escalate baseline. See `report.md` for the
+full results table, failure analysis, and -- importantly -- why these
+numbers should not be taken at face value on their own.
 
 ## Architecture
 
@@ -49,78 +46,109 @@ export GROQ_API_KEY=gsk_...   # free key: https://console.groq.com/keys
 ```
 
 Uses Groq's free tier (`openai/gpt-oss-20b` for classification/routing,
-`openai/gpt-oss-120b` for drafting/judging -- see `src/config.py`). No credit
-card required for a Groq account.
+`openai/gpt-oss-120b` for drafting/judging -- see `src/config.py`). No
+credit card required for a Groq account.
 
 ## Reproduce headline results (<15 min)
 
+The golden set (`eval/golden_set.csv`, 154 real AmazonHelp tweets) and the
+historical grounding corpus (`data/historical_threads.csv`, ~2,984 real
+customer/reply pairs filtered from the Kaggle dataset) are already included
+in this repo, so you don't need to re-download or re-filter anything to
+reproduce the headline numbers.
+
 ```bash
-# 1. Run the agent over the golden set's tweets
+# 1. Run the agent over the golden set
 python scripts/run_pipeline.py \
     --input eval/golden_set.csv \
-    --output outputs/results.csv
+    --output outputs/agent_results.csv
 
 # 2. Intent + routing metrics against ground truth
 python eval/metrics.py \
-    --predictions outputs/results.csv \
+    --predictions outputs/agent_results.csv \
     --golden eval/golden_set.csv
 
-# 3. LLM-judge reply quality
-python eval/llm_judge.py \
-    --predictions outputs/results.csv \
-    --out outputs/judged.csv
+# 3. Baselines, for comparison
+python scripts/run_baseline.py --input eval/golden_set.csv --output outputs/trivial_results.csv --baseline trivial
+python scripts/run_baseline.py --input eval/golden_set.csv --output outputs/simple_results.csv --baseline simple
+python eval/metrics.py --predictions outputs/trivial_results.csv --golden eval/golden_set.csv
+python eval/metrics.py --predictions outputs/simple_results.csv --golden eval/golden_set.csv
 
-# 4. (separately, offline) score ~30-40 of the same replies yourself using
-#    the same rubric in eval/llm_judge.py's JUDGE_SYSTEM prompt, save to
-#    eval/human_scores.csv, then:
-python eval/llm_judge.py --agreement outputs/judged.csv --human eval/human_scores.csv
+# 4. LLM-judge reply quality
+python eval/llm_judge.py --predictions outputs/agent_results.csv --out outputs/judged.csv
 
-# 5. Baselines, for comparison (see src/baselines.py + report.md)
+# 5. Judge-human agreement check (a pre-filled 25-example human-scored
+#    sample is included at eval/human_scores_template.csv; to redo it
+#    yourself, regenerate a fresh sample first)
+python scripts/sample_for_human_scoring.py --input outputs/judged.csv --output eval/human_scores_template.csv --n 25
+# ... hand-score the 25 rows using the same rubric as eval/llm_judge.py's JUDGE_SYSTEM prompt, then:
+python eval/llm_judge.py --agreement outputs/judged.csv --human eval/human_scores_template.csv
 ```
 
-With the 50-example placeholder set and a ~150-200 example golden set, steps
-1-3 run in well under 15 minutes (mostly LLM API latency).
+Steps 1-4 run in well under 15 minutes (mostly LLM API latency, ~154 calls
+each for steps 1 and 4; steps 3 are instant, no API calls). Step 5's
+hand-scoring is a manual step, not something the 15-minute reproduction
+window is meant to cover -- a completed sample is already included so the
+agreement numbers in `report.md` can be reproduced by running the last
+command alone.
 
-## Using the real dataset
+## Rebuilding the golden set / historical corpus from scratch (optional)
 
-1. Download `thoughtvector/customer-support-on-twitter` from Kaggle.
-2. Filter to `author_id == "AmazonHelp"` and reconstruct (customer inbound
-   message, AmazonHelp's reply) pairs using `in_response_to_tweet_id`.
-3. Replace `data/historical_threads.csv` with a real subsample (a few
-   thousand rows is plenty -- see the assignment's "we will not run this on
-   the full dataset" note). Keep the same column schema:
-   `thread_id, customer_tweet, historical_agent_reply, intent` -- you'll need
-   to hand-label `intent` for a subset, or bootstrap it from the classifier
-   and spot-check.
-4. Re-run the golden-set sampling & labeling process in
-   `eval/labeling_guide.md` against the real data.
-5. `MAJORITY_INTENT` in `src/baselines.py` should be updated to match the
-   real distribution.
+The repo already includes the filtered real data and the final hand-labeled
+golden set, but if you want to rebuild either from the raw Kaggle export:
+
+```bash
+# 1. Download thoughtvector/customer-support-on-twitter from Kaggle, get twcs.csv
+
+# 2. Filter to AmazonHelp (customer_tweet, historical_agent_reply) pairs
+python scripts/filter_amazonhelp.py --input path/to/twcs.csv --output data/historical_threads.csv --limit 3000
+
+# 3. Bootstrap intent labels with the classifier (starting point, not ground truth)
+python scripts/bootstrap_intents.py --input data/historical_threads.csv --output data/historical_threads_bootstrapped.csv --limit 500
+
+# 4. Stratified-sample candidates for hand-labeling (see eval/labeling_guide.md)
+python scripts/sample_golden_set.py --input data/historical_threads_bootstrapped.csv --output eval/golden_set_candidates.csv --per-intent 20
+
+# 5. Hand-label eval/golden_set_candidates.csv (the real, time-consuming step --
+#    correct intents, set should_escalate + reasons, mark EXCLUDED_NON_ENGLISH /
+#    DUPLICATE as needed), then finalize:
+python scripts/prepare_eval_set.py --input eval/golden_set_candidates.csv --output eval/golden_set.csv
+```
 
 ## Repo layout
 
 ```
 src/
-  config.py          intent taxonomy, risk tiers, model names
-  llm_client.py       Groq API wrapper
-  classify_intent.py  intent classification
-  retrieval.py         TF-IDF grounding retrieval
-  draft_reply.py       reply drafting
-  router.py            auto-handle / escalate rule
-  pipeline.py           orchestration (single source of truth)
-  baselines.py          trivial + simple baselines
+  config.py            intent taxonomy, risk tiers, model names
+  llm_client.py         Groq API wrapper
+  classify_intent.py    intent classification
+  retrieval.py           TF-IDF grounding retrieval
+  draft_reply.py         reply drafting
+  router.py              auto-handle / escalate rule
+  pipeline.py             orchestration (single source of truth)
+  baselines.py            trivial + simple baselines
 eval/
-  golden_set_template.csv   columns for the hand-labelled golden set
-  labeling_guide.md          how the golden set was/should be sampled & labeled
-  metrics.py                  intent accuracy, routing precision/recall
-  llm_judge.py                 LLM-as-judge rubric + human-agreement check
+  golden_set.csv                final 154-example hand-labeled eval set
+  golden_set_candidates.csv      pre-final labeling working file (195 rows)
+  human_scores_template.csv       25-example human-scored sample for judge agreement
+  labeling_guide.md                how the golden set was sampled & labeled
+  metrics.py                        intent accuracy, routing precision/recall
+  llm_judge.py                       LLM-as-judge rubric + human-agreement check
 scripts/
-  generate_placeholder_data.py   builds the synthetic historical_threads.csv
-  run_pipeline.py                  CLI to run the agent over a CSV
+  filter_amazonhelp.py          extracts real AmazonHelp pairs from raw Kaggle data
+  bootstrap_intents.py           auto-labels intents on real data as a labeling starting point
+  sample_golden_set.py            stratified sampling for golden-set candidates
+  prepare_eval_set.py              finalizes the hand-labeled golden set
+  run_pipeline.py                   CLI to run the full agent over a CSV
+  run_baseline.py                    CLI to run the trivial/simple baselines
+  sample_for_human_scoring.py         samples judge output for hand-scoring
+  generate_placeholder_data.py         builds synthetic dev data (not used in final results)
 data/
-  historical_threads.csv     grounding corpus (currently synthetic -- see above)
+  historical_threads.csv        real grounding corpus (~2,984 AmazonHelp pairs)
+  historical_threads_bootstrapped.csv   500-row auto-labeled subset used for golden-set sampling
 report.md               problem framing, results, failure analysis, next steps
-decision_log.md           non-obvious decisions and why
+decision_log.md           15 non-obvious decisions and why
+
 ```
 
 ## Citations / borrowed material
