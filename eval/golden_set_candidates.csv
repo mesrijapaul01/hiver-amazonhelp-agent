@@ -1,0 +1,242 @@
+id,customer_tweet,true_intent,should_escalate ,escalate_reason,notes,_bootstrap_confidence
+golden_0000,"@AmazonHelp Haven’t received any mail, can you please resend mail to __email__",account_or_login_issue,TRUE,,,0.73
+golden_0001,"@AmazonHelp I have checked there is no email from amazon, and amazon is in safe senders list.",account_or_login_issue,TRUE,,,0.82
+golden_0002,"@AmazonHelp it was doing this a few days ago and a factory reset fixed it, for two days. A hard reboot with card in or out does not resolve.",general_product_question,,,"Device troubleshooting (likely Kindle/Fire), doesn't cleanly fit any intent � forced into general_product_question as closest fit",0.87
+golden_0003,@AmazonHelp Trying to place an order this happened before and deleting and rentering my address fixed it but now it's across multiple prime accounts to the same address,general_product_question,,,,0.88
+golden_0004,@115823 I want my amazon payments account CLOSED.  dm me please.,cancellation_request,,,,0.92
+golden_0005,@AmazonHelp You have to log in. I don't remember the email address I used. Can you look up the account by my bank information?,account_or_login_issue,TRUE,,,0.92
+golden_0006,"@AmazonHelp I have tried. It’s not allowing me to access my account to cancel my membership, I haven’t even used prime in almost 3 months.",cancellation_request,,,,0.92
+golden_0007,"@AmazonHelp no luck on receiving the code by text or call, will I loose my account, yesterday a phone representative tried to help already https://t.co/Yn5SUBQonU",account_or_login_issue,TRUE,,,0.92
+golden_0008,@115851 my Amazonid is __email__ is blocked since 3months please unblock it.,account_or_login_issue,TRUE,,,0.92
+golden_0009,@AmazonHelp For the third time. I HAVE NO RECENT E-MAIL FROM YOUR SOCIAL MEDIA TEAM.,complaint_escalation,TRUE,,,0.92
+golden_0010,@AmazonHelp It’s not allowing me to update it to register my new amazon account. I read I’d have to do so manually. Thx 4 response.,account_or_login_issue,TRUE,,,0.99
+golden_0011,@AmazonHelp i reset my password 3 times and it still says incorrect you gotta be shitting me,account_or_login_issue,TRUE,,,0.97
+golden_0012,"@AmazonHelp no luck it keeps asking for code witch is not sending to my phone can Amazon eliminate the 2 step method, this is so frustrating",account_or_login_issue,TRUE,,,0.99
+golden_0013,"@116313 注文した覚えのないものが届きました。
+家族も誰も何もしていません。
+勝手にレビューも書いてたり、ギフト券も購入してる様子。
+今パニック状態なのですが、どこに連絡すればよいのでしょうか？",EXCLUDED_NON_ENGLISH,,,The Golden set is restricted to English-language tweets; non-English messages are excluded from the evaluation scope due to time constraints � a real deployment would require multilingual handling.,0.95
+golden_0014,@AmazonHelp I can’t log in because it’s locked.,account_or_login_issue,TRUE,,,0.97
+golden_0015,@AmazonHelp Hello? So how do I contact someone if I can't log in?! I'm really concerned about what is happening with my acct and who has access to it!,account_or_login_issue,TRUE,,,0.97
+golden_0016,@115821 WTF MAN. YALL LET SOME RANDO CHANGE MY EMAIL TO MY ACCOUNT AND NOW I CANT LOG IN. FIX IT!!!!!,complaint_escalation,TRUE,,,0.99
+golden_0017,"Hey @117804, é possível sincronizar minha conta do @695 para ler no Kindle?",EXCLUDED_NON_ENGLISH,,,Golden set restricted to English-language tweets; non-English messages excluded from evaluation scope due to time constraints � real deployment would need multilingual handling.,0.95
+golden_0018,"@AmazonHelp Still not working.  They sent me a link to reset the password, try and sign in with new password and still locked out.",account_or_login_issue,TRUE,,,0.99
+golden_0019,"@AmazonHelp um, my account was locked as soon as I tried to login on desktop. I still haven’t received an email on how to get it unlocked...",account_or_login_issue,TRUE,,,0.98
+golden_0020,@AmazonHelp when its removed the system says it's inserted but unrecognized. When it's inserted the tablet behaves as though there's no card,general_product_question,,,,0.78
+golden_0021,"Hi @AmazonHelp, when I placed my order I requested a VAT receipt either via email or post but I still haven’t had one?",billing_or_payment_issue,TRUE,,,0.78
+golden_0022,@AmazonHelp Deluxe edition on September 16th. It definitely had the pre orders on the profile because that’s why I ordered. Also why I paid for Prime..,billing_or_payment_issue,TRUE,,,0.82
+golden_0023,@AmazonHelp Solicitud (foto del estado de cuenta),EXCLUDED_NON_ENGLISH,,,The Golden set is restricted to English-language tweets; non-English messages are,0.87
+golden_0024,なんかAmazon支払い方法変わりました？？,EXCLUDED_NON_ENGLISH,,,,0.92
+golden_0025,"@115850 Under the same order ID another product of 617 was delivered, paid 700 asked to add the balance to the wallet, same thing, not added",billing_or_payment_issue,TRUE,,,0.92
+golden_0026,@AmazonHelp Kann ich dann wenigstens mein Amazon-Konto aufladen um zu bezahlen. Ich habe keine Kreditkarte und möchte auch keine,EXCLUDED_NON_ENGLISH,,,,0.92
+golden_0027,@AmazonHelp and redund issued on 13th https://t.co/1uydlorGCp no sing of my money and amazonuk just saying its in the billing department.no signof devlp,refund_or_return,TRUE,,,0.92
+golden_0028,30日にAmazonでカード払いで買ったんだけど、1日深夜に出荷準備が遅れていますメールと共にまたカード利用のメール。どういうこっちゃʅ（◞‿◟）ʃ遅れるのは全然構わないけど2倍払わされるのは勘弁だわー。Amazonでのカード払いやめよう。,EXCLUDED_NON_ENGLISH,,,,0.92
+golden_0029,"そういえば28日発売なのにAmazon予約したPrince写真集の支払い番号まだ届かないってやばみ？
+誰か〜Amazonで注文してる人いませんか〜",EXCLUDED_NON_ENGLISH,,,,0.93
+golden_0030,@AmazonHelp where can I chat with a support member for a false charge,billing_or_payment_issue,TRUE,,,0.97
+golden_0031,Haha @117634 has been sneakily charging me $9.99 SINCE FEBRUARY for a service I never use💩🙈👎 $90 gone!!! Thanks @AmazonHelp,billing_or_payment_issue,TRUE,,,0.99
+golden_0032,"@115821 being charged for amazon prime &amp; when I go to cancel it, it’s saying I’m not a member😠😠😠",cancellation_request,,,,0.93
+golden_0033,@AmazonHelp when do you guys charge for the Xbox one X I preordered? It ships the 6th.,billing_or_payment_issue,TRUE,,,0.92
+golden_0034,"just noticed I paid £4.95 delivery on Amazon simply because I did not select the FREE delivery option, after I spent enough to qualify... what a RIP OFF, why is it not free automatically when qualifying @115830",billing_or_payment_issue,TRUE,,,0.93
+golden_0035,"@119038 @115821 If it isn't clear yet, I WANT MY MONEY BACK. I NEVER AUTHORIZED THE LAST 4 TRANSACTIONS THAT WERE MADE. WTF.",billing_or_payment_issue,TRUE,customer reports unauthorized transactions,,0.95
+golden_0036,@AmazonHelp 今までコンビニで支払いが出きるという支払い方法でAmazonさんにお世話になっていたんですけど、選択画面にその支払い方法が表示されなくて、色々いじってみたんですけどどうにも……！,EXCLUDED_NON_ENGLISH,,,,0.92
+golden_0037,@AmazonHelp Warum ist es mir (und scheinbar auch ein paar anderen) nicht möglich per Bankeinzug zu bezahlen?,EXCLUDED_NON_ENGLISH,,,,0.99
+golden_0038,"@117093 Hey yall. Why is my checkout not working? I click ""checkout with fresh"" and it takes me to an error page. What's the deal?",general_product_question,,,,0.92
+golden_0039,"@AmazonHelp I don't want a form to fill out that logs a response no one reads. I want to prevent AMZL from touching my stuff. Possible, or no?",cancellation_request,,,,0.78
+golden_0040,Two fake items in one day. Time to cancel my Amazon Prime membership. @AmazonHelp,cancellation_request,,,,0.92
+golden_0041,"@AmazonHelp Order date
+06-Oct-2017
+Order #
+406-8895581-1413106
+Order total
+   3,719.00 (delete it again)",cancellation_request,,,,0.92
+golden_0042,"@AmazonHelp Order date
+06-Oct-2017
+Order #
+406-8895581-1413106
+Order total
+   3,719.00 (delete it again)",DUPLICATE,,,,0.92
+golden_0043,"@AmazonHelp ご親切にどうもありがとうございます。
+買おうと思った商品が出品者の意向でキャンセルになり、同じ商品が出品されたまま１万円値段が上がっていました。不可解です。",EXCLUDED_NON_ENGLISH,,,,0.92
+golden_0044,"@AmazonHelp リプありがとうございます！
+それがデビット機能は付いていないので不思議だったのです。
+
+いずれにせよ取り消されるみたいで安心しました！",EXCLUDED_NON_ENGLISH,,,,0.92
+golden_0045,勝手にAmazonプライム会員になってて毎月会員費とられてた😇😇😇,EXCLUDED_NON_ENGLISH,,,,0.92
+golden_0046,諸事情でamazonプライム使ったんだけど、これ早く解除しないとお金取られちゃうんだっけ…今回だけなんだよね、どうしても今日ほしいのは…ついでにはいび〜写真集頼んじゃったけども,EXCLUDED_NON_ENGLISH,,,,0.92
+golden_0047,"@AmazonHelp ""Refused shipment - on the way back.""",refund_or_return,TRUE,,,0.92
+golden_0048,"@AmazonHelp yes spoke w/ customer service, still canceling my prime though since it does literally nothing apparently",cancellation_request,,,,0.97
+golden_0049,@AmazonHelp Thats the thing I told customer service. I created a new email address for the Prime trial and forgot it. What can I do so I'm not charged?,cancellation_request,,,,0.95
+golden_0050,@AmazonHelp I have asked the customer care exec on phone to cancel the order. Don't want to waste any more of my time on this.,cancellation_request,,,,0.99
+golden_0051,@AmazonHelp but I can’t find the options to cancel or re-order?,cancellation_request,,,,0.93
+golden_0052,@AmazonHelp Seriously!!! Ur customer service already told me cancel d order .. Amazon can't do anything to it..n till now it's showing expected on 25th👏,cancellation_request,,,,0.96
+golden_0053,@116875 Cancelación de  membresía Amazon Prime y reembolso ya!,EXCLUDED_NON_ENGLISH,,,,0.98
+golden_0054,"やばー！
+Amazonプライム自動更新されてしまった💧",EXCLUDED_NON_ENGLISH,,,,0.95
+golden_0055,@AmazonHelp hi I cancelled an item today but the money has not shown back up in my bank yet can you tell me how long it takes?,refund_or_return,TRUE,,,0.97
+golden_0056,@AmazonHelp I am now cancelling this order because your delivery service just sucks despite prime membership. Switching to @118702 for future.,cancellation_request,,,,0.95
+golden_0057,@AmazonHelp @115821 consider leaving the delivery of packages to the experts at @115817 or @81. Obvious decline in service when it’s @115821 logistics.,complaint_escalation,TRUE,,,0.7
+golden_0058,"@AmazonHelp Submitted, for the third time for the same issue.",complaint_escalation,TRUE,,,0.75
+golden_0059,"@AmazonHelp AMZL US Tracking ID TBA566517950000 it says delivered to mail room, I checked the mail and the front offce, the driver listed 1 package, in that one package was my XLR cables...I'm missing the controller.",damaged_or_wrong_item,,,,0.8
+golden_0060,@AmazonHelp Please do it fast,complaint_escalation,TRUE,,,0.82
+golden_0061,Amazon delivery guy refused to give the police his ID and suddenly started sounding like an attorney. Good grief,complaint_escalation,TRUE,"incident involving police, needs human handling",,0.82
+golden_0062,"@AmazonHelp I got it sorted out, after multiple phone calls and failed chat sessions (those were horrible btw)",other_spam_irrelevant,,,,0.85
+golden_0063,"@116090 Saying I preordered to early, terrible customer service. Won’t renew prime if this isn’t fixed.",complaint_escalation,TRUE,,,0.85
+golden_0064,@AmazonHelp Rather than wasting time here can you please check with your team &amp; confirm whether they have responded. Use basic communication skills Sir,complaint_escalation,TRUE,,,0.85
+golden_0065,@AmazonHelp I already emailed y’all.,complaint_escalation,TRUE,,,0.85
+golden_0066,@AmazonHelp Can you please update over this quickly,complaint_escalation,TRUE,,,0.85
+golden_0067,@AmazonHelp I have had the hassle to provide my concern on the given link twice and it’s a pain. Use the details I already mentioned. I m not doing it,complaint_escalation,TRUE,,,0.87
+golden_0068,"@AmazonHelp 電話で対応してもらいましたが改良されませんでした。
+保証期間も過ぎてるので買い直しになるんでしょうね。",EXCLUDED_NON_ENGLISH,,,,0.93
+golden_0069,@AmazonHelp May i just add that realising NO ACTION HAS BEEN TAKEN on my complaint is not much fun. Worst customer care EVER ! https://t.co/bHOHPNnZFA,complaint_escalation,TRUE,explicit complaint that no action was taken,,0.99
+golden_0070,@AmazonHelp Never got the beta and now I’m being told I won’t get ANY of the other stuff. Including Last Jedi content and or bonus classes. Anything! :(,complaint_escalation,TRUE,,"missing promised bonus content, complaint_escalation is a stretch; could argue refund_or_return or general_product_question instead",0.92
+golden_0071,"@AmazonHelp same reply again and again. if the complaint is raised under warranty period and if @2005 wont solve it, how is it out of warranty?",complaint_escalation,TRUE,,,0.92
+golden_0072,"@115850 I have stopped ordering from your site, Amazon courier guys are very rude. I have given similar complaints to u no of tyms.",complaint_escalation,TRUE,repeated complaints about rude couriers,,0.92
+golden_0073,Rapidly losing faith in @115821 and their #esl CS ability to solve problems. No resolutions or follow ups.,complaint_escalation,TRUE,"explicitly losing faith, no resolution or follow-up",,0.95
+golden_0074,@AmazonHelp  don't promise a 1 day shipping with a GUARANTEED 8pm delivery when you can't keep it,complaint_escalation,TRUE,,"broken delivery promise, could be delivery_delay_or_lost instead of complaint_escalation",0.9
+golden_0075,@AmazonHelp Sorry to have to say this. But you all are idiots. Once more email completely ignoring my query and giving template reply,complaint_escalation,TRUE,"hostile language, repeatedly ignored",,0.95
+golden_0076,"@AmazonHelp how is Amazon going to solve this? By mail, text, call, customer phone service, no one is able to help me https://t.co/jhzCjY2bOw",complaint_escalation,TRUE,no support channel has been able to help,,0.92
+golden_0077,Amazonで買い物なんかしてないのになんか届いてるけど怖くて開けられん🧐,EXCLUDED_NON_ENGLISH,,,,0.85
+golden_0078,@116096 Truly. This is the strangest vampire book I’ve ever received. 😜 cc @43760 @AmazonHelp #misship https://t.co/Zad7Az14Zg,damaged_or_wrong_item,,,,0.92
+golden_0079,"I seem to have bad luck in trying to get undamaged books from @115821. Sometimes it's damaged in delivery, but this one was packed this way. https://t.co/HnwtSE7e31",damaged_or_wrong_item,,,,0.92
+golden_0080,amazonの梱包雑…珍しい。しかも、資格のテキスト少しページ曲がってしまってるし2冊が合体してたし…,EXCLUDED_NON_ENGLISH,,,,0.92
+golden_0081,Amazon梱包雑になったぞおおおおおお！？！？ https://t.co/flImzUdwwk,EXCLUDED_NON_ENGLISH,,,,0.92
+golden_0082,うええ……Amazonさんで9800円のお買い物してお金払ったのに商品が不良品で出荷できなくなり、アマゾンギフト券で9800円戻されても……ちょっと金額大きいんですけど……。,EXCLUDED_NON_ENGLISH,,,,0.92
+golden_0083,"@115821 , #fake I phone 7 received from amazon , India - order ID: amazon India has refused to replace @115850 pictures attach herewith. https://t.co/iYmtFWzE6o",damaged_or_wrong_item,,,,0.92
+golden_0084,Seriously @115821 what is up with ordering things and it being open?  You guys shipping returned items.  2nd day in a row this happens :SMH: https://t.co/gMyT1z9Zu1,damaged_or_wrong_item,,,,0.92
+golden_0085,"@AmazonHelp ordered what was on the box for my sister’s wedding gift, that’s what came out of the box. What gives?! https://t.co/8jX9A0Ipcu",damaged_or_wrong_item,,,,0.92
+golden_0086,"Hi @AmazonHelp, I’ve purchased something via your app and it’s broken! How can I get it replaced?",damaged_or_wrong_item,,,,0.97
+golden_0087,@115830  website impossible to navigate - all I want to do is email about a faulty item - 20 min going round in circles. Infuriating 😡😡😡,damaged_or_wrong_item,,,tangled: faulty item + separate frustration about website navigation,0.93
+golden_0088,Ordered cases for our new iPhone X and @115821 sent me iPhone 8 cases for BOTH ones. NOT THE SAME PHONE! #pissed,damaged_or_wrong_item,,,,0.96
+golden_0089,"@115821, it’d be nice if the book I waited 4 months for wasn’t damaged inside of an undented box. #twinpeaks #twin… https://t.co/Lac4K7iQzJ https://t.co/JroqJKrH9Q",damaged_or_wrong_item,,,,0.97
+golden_0090,What the hell @115821?! This boxed is beyond damaged. I wanted a new one! https://t.co/J36cokDm6l,damaged_or_wrong_item,,,,0.97
+golden_0091,#Amazon who packages these games. Ordered to games and both came rattling inside their cases. One is broken. Games may have suffered scratches. @115821 https://t.co/KqpOkpLeP8,damaged_or_wrong_item,,,,0.93
+golden_0092,"@115821 , #fake I phone 7 received from amazon , India - order ID: amazon India has refused to replace @115850 pictures attach herewith. https://t.co/iYmtFWzE6o",DUPLICATE,,,,0.93
+golden_0093,"【新  一日一句】10.31
+
+ハロウィンは
+クレームさえも
+吹き飛ばす🎃
+
+Amazonで
+マリオとルイージを買ったのに
+マリオとマリオが来たwww
+
+Wルイージよりマシか！笑
+ハッピーハロウィン！👻💕 https://t.co/3s4J9MbYAc",EXCLUDED_NON_ENGLISH,,,,0.94
+golden_0094,My drying rack was broken when I opened the box. What should I do @115821? https://t.co/II4YnrWx0E,damaged_or_wrong_item,,,,0.96
+golden_0095,"@AmazonHelp They did not. The wrinkle is, I board a plane for the U.K. In the am and these items were part of the attire for the wedding im in.",delivery_delay_or_lost,,,,0.78
+golden_0096,@AmazonHelp Wasn't tracked as sent via Royal Mail. I've emailed the seller.,delivery_delay_or_lost,,,,0.85
+golden_0097,@115847 @115821 Yeah idk the shipping company and it says “mike Ziemer” signed for it in the mail room at our building lol,delivery_delay_or_lost,,,signed for by someone else in mail room � could arguably be damaged_or_wrong_item (lost/misdelivered) instead,0.88
+golden_0098,@115821 thanks for such thoughtful packing. Must be why it takes so long to ship #whoneedspeanuts #oversized https://t.co/c3quxqnvqi,delivery_delay_or_lost,,,,0.88
+golden_0099,Just pulled another #Amazon delivery out of the bushes since the #amzl people can’t walk the extra 2 ft to my door. So tired of this.,delivery_delay_or_lost,,,"delivery-placement complaint (package left in bushes) � doesn't cleanly fit any intent, worth noting as another taxonomy gap alongside the device-troubleshooting one from earlier",0.92
+golden_0100,@115821 my order hasn’t arrived (it was due 14th October). Can you help?,delivery_delay_or_lost,,,,0.92
+golden_0101,"Hey @115821, why is your Prime 2-day delivery not arriving until Monday? Is there a holiday I don't know about?",delivery_delay_or_lost,,,,0.92
+golden_0102,"@115830 my package was ‘accidentally’ opened.. 4 items missing worth £97.
+You need better delivery drivers!! https://t.co/f6SaVBSMqM",damaged_or_wrong_item,,,,0.92
+golden_0103,@AmazonHelp No on the card. It works only half the time. Yes on USPS. They say my delivery person won’t deliver anything over 30 lbs. just sends it back,delivery_delay_or_lost,,,,0.92
+golden_0104,@115830 you pay for prime expecting next day delivery. Then receive 2 emails half hr apart 'failed delivery' but your sitting at home 😡,delivery_delay_or_lost,,,,0.92
+golden_0105,"@AmazonHelp what the hell is going on?! Today's last day to deliver and still not shipped!!
+Should I pledge that I won't ever order from u?!",delivery_delay_or_lost,TRUE,"angry, item not shipped on promised last day",,0.99
+golden_0106,"@AmazonHelp My apologies, it says now that the delivery date is October 31st. Still hasn't come though.",delivery_delay_or_lost,,,,0.93
+golden_0107,@AmazonHelp How many times will the pick-up be rescheduled? https://t.co/oQuGBF84QS,delivery_delay_or_lost,,,,0.92
+golden_0108,@AmazonHelp They said it was UPS. UPS says they never received the package to deliver ¯\_(ツ)_/¯,delivery_delay_or_lost,,,,0.92
+golden_0109,@AmazonHelp 408-9273159-6369903.replacement ordered from 24th Oct.no1 contact me.Really worst courier service from Amazon,delivery_delay_or_lost,TRUE,"no contact after multiple attempts, repeated failure",,0.92
+golden_0110,@118919 @119356 अगर आप नोकिया 6 mobile को समय पर  नही पहुंचा पाते हैं customer को  तो क्यों आप नोकिया का फ़ोन बेचते है,EXCLUDED_NON_ENGLISH,,,,0.92
+golden_0111,"@AmazonHelp After getting a confirmation that it will be delivered post 7 pm, i have got an email at 1:30 in the afternoon that i was not available !",delivery_delay_or_lost,,,,0.92
+golden_0112,hey @115821 why did i pay extra for shipping only for my order to say 'arriving today' and it still hasnt shipped yet just wondering.,delivery_delay_or_lost,,,,0.93
+golden_0113,"@AmazonHelp Hi, I ordered an item on 18 Oct which said it would be delivered by 20 Oct and I still haven't received it. Can you help? Thanks",delivery_delay_or_lost,,,,0.97
+golden_0114,"@AmazonHelp 3 different people have given 3 different answers and I still don't have my order. Says delivered Saturday, was not, I was home all day",delivery_delay_or_lost,TRUE,"conflicting information from 3 reps, false delivered status",,0.97
+golden_0115,"砂来のウィッグ コロネロの使える思ってのんびりしてたら、家が引越し荷物だらけで探せなかったんは焦ったわぁ
+(Amazonで頼んで昨日届いたありがとうprime)",EXCLUDED_NON_ENGLISH,,,,0.78
+golden_0116,amazonのfireTVstickが見れない😢,EXCLUDED_NON_ENGLISH,,,,0.85
+golden_0117,@AmazonHelp There was only one costing a lot more than £20 and  FBA -stating eligibility !,general_product_question,,,,0.85
+golden_0118,@AmazonHelp the last email i got was the transcript of the last chat that i requested.. you want me to reply to that??,general_product_question,,,,0.85
+golden_0119,@AmazonHelp Is that a 24 hr line,general_product_question,,,,0.88
+golden_0120,amazonプライムビデオ、再生エラーが多いです,EXCLUDED_NON_ENGLISH,,,,0.9
+golden_0121,@115833 please teach Alexa slang. I've been trying to play Momentz by gorillaz for the last 30 minutes.,general_product_question,,,,0.9
+golden_0122,"@AmazonHelp Just now, don't use Amazon much so didn't know the process if you don't receive an item",general_product_question,,,,0.9
+golden_0123,"Amazonの使い方が難しく感じます
+
+わけわかめ
+
+ちゃんと頼めてんのかね",EXCLUDED_NON_ENGLISH,,,,0.9
+golden_0124,@116935 Will I be forced to listen to ads on Amazon Music Unlimited the way I'm now forced to view them on @530?,general_product_question,,,,0.92
+golden_0125,@115850 why to you promise false discounts with wrong mrp ...the device I bought showed a mrp of 7999 when its actual mrp is 7499 https://t.co/1kqHQVHBcl,general_product_question,,,,0.92
+golden_0126,"@AmazonHelp Didn’t know I needed to. Is that really a thing?! But still Prime shipping should be 2 days, correct?",general_product_question,,,,0.92
+golden_0127,@AmazonHelp The carrier doesn't sell free 2 day shipping as part of a membership. Amazon does.,general_product_question,,,,0.92
+golden_0128,@116313 FireTVstick購入し接続完了、画面の切り替えも問題ないのですが、音声が切り替わらないです。どうしたらいいのでしょうか？(＞＜),EXCLUDED_NON_ENGLISH,,,,0.92
+golden_0129,"Amazon Kindle の「スライダー」が「マイライブラリー」になったの、本当に不便。「スライダー」は「スライダーから削除」を使うことで、「今、読んでいる(or次に読みたい)本」の枠として便利だった。「マイライブラリー」はどんな思想の枠ですか？
+@118500",EXCLUDED_NON_ENGLISH,,,,0.97
+golden_0130,@AmazonHelp is there a way to know if the Amazon gift cards I send are being used?,general_product_question,,,,0.98
+golden_0131,@AmazonHelp if I add another adult to my Amazon household (with their own account) can they see my wishlists/photos/order history?,general_product_question,,,,0.95
+golden_0132,"@115833, hi, I've bought an Amazon echo for for a present do they also need an Amazon alexa?",general_product_question,,,,0.93
+golden_0133,@116313 fire TV stickを購入したのですが一瞬しかうつりません.°(ಗдಗ。)°.どうしたらいいのでしょうか...,EXCLUDED_NON_ENGLISH,,,,0.94
+golden_0134,@AmazonHelp since when you stop giving 20% off videogame pre-orders (amazon prime members) im confused? why?,general_product_question,,,,0.92
+golden_0135,@AmazonHelp Still not got any mail please solve my problem right now.,account_or_login_issue,TRUE,,,0.6
+golden_0136,"@AmazonHelp Si, es correos y pedí ke viniesen a x el pakete pero me pedian ke me kedase o toda una mañana o toda una tarde en casa pero y mi trabajo??",EXCLUDED_NON_ENGLISH,,,,0.65
+golden_0137,@AmazonHelp You have all my details. Please expedite the process,order_status_tracking,,,"very short/low-context (0.65 confidence), hard to verify without more context",0.65
+golden_0138,"@AmazonHelp No, I can't check. It shows nothing. And customer service rep was NO help.",order_status_tracking,TRUE,"customer service rep already unable to help, escalation needed",,0.75
+golden_0139,@AmazonHelp Yes i have received reference number,order_status_tracking,,,,0.75
+golden_0140,@115850 ur app shows expected delivery on 25 th on 30th( prepaid orders).it's a regular customer realising not to buy anything further.,order_status_tracking,,,"mentions leaving as a customer � borderline complaint_escalation vs order_status_tracking, your call",0.8
+golden_0141,@AmazonHelp Nothing on my order on your web site.,order_status_tracking,,,,0.82
+golden_0142,@AmazonHelp Order details!!! https://t.co/Rapb0ePnLK,order_status_tracking,,,,0.85
+golden_0143,Me ha tocado un inepto en @4496 keiere gestionar la recogida de mi pakete de @115821 se monta su ruta y yo como penelope a esperarle! 😤,EXCLUDED_NON_ENGLISH,,,,0.88
+golden_0144,@AmazonHelp No package.,order_status_tracking,,,"technical tracking anomaly (USPS), fine as order_status_tracking but slightly unusual",0.9
+golden_0145,アマゾンの荷物届かないんですけどー！！聞いたこと無い業者から配達されるから怪しいと思ってたらこれだよ。,EXCLUDED_NON_ENGLISH,,,,0.92
+golden_0146,"@AmazonHelp The tracking indicated as here, and then, it seemed to go back in time, saying it was not here anymore. I believe it's USPS",order_status_tracking,,,,0.92
+golden_0147,@AmazonHelp It doesn't say.  It shows it hasn't shipped yet.,order_status_tracking,,,,0.95
+golden_0148,@115821 where’s my damn nutribullet,order_status_tracking,TRUE,frustrated tone but simple tracking ask,,0.95
+golden_0149,@AmazonHelp I have no option but to see if my delivery arrives on the scheduled date. But I will contact customer services if it doesn't arrive on time.,order_status_tracking,,,,0.98
+golden_0150,@115821 still don't know if my order has shipped or not.. BUT at least I'm a good person! https://t.co/hzYEL3qL7r,order_status_tracking,,,,0.95
+golden_0151,I'm so anxious to see that my Xbox one X will be shipping. I'm seeing other people get their confirmations. Where's mine @115821,order_status_tracking,,,,0.99
+golden_0152,"@AmazonHelp Thanks, I called. The agent says the order has been received, but not shipped. Still anticipate a Friday delivery",order_status_tracking,,,,0.95
+golden_0153,@115821 Hasta que al fin llegó #BrBa https://t.co/7y2HKQlA2R,EXCLUDED_NON_ENGLISH,,,,0.92
+golden_0154,Seriously @115821? I order 6 identical washing up bowls and they are all being dispatched as separate orders? My phone is buzzing non-stop!,order_status_tracking,,,venting about receiving 6 separate shipments � arguably closer to complaint_escalation given the frustrated tone,0.92
+golden_0155,@AmazonHelp I talked on the phone to someone who offered 10 percent off but that isn't on the account yet.  Still don't know delivery date.,delivery_delay_or_lost,,,,0.7
+golden_0156,@117086 ei mim ajuda,EXCLUDED_NON_ENGLISH,,,,0.78
+golden_0157,@AmazonHelp Please do it fast,DUPLICATE,,,,0.78
+golden_0158,@AmazonHelp I'm UK based. Are the contact details the same?,general_product_question,,,,0.8
+golden_0159,@AmazonHelp I’m looking to reroute all my packages (except 1) to a nearby Amazon locker. I’ll DM you now :),general_product_question,,,,0.8
+golden_0160,@AmazonHelp Okay....what information do you need to be able to help then???,other_spam_irrelevant,,,"too short / mid-conversation with no visible context, genuinely hard to classify confidently",0.82
+golden_0161,@115821 Apparently if you preorder something then move and update your address the preorder doesn't update automagically.  #lessonlearned?,other_spam_irrelevant,,,doesn't fit any intent cleanly � another taxonomy gap,0.85
+golden_0162,@AmazonHelp I have. No luck.,other_spam_irrelevant,,,"too short / mid-conversation with no visible context, genuinely hard to classify confidently",0.85
+golden_0163,"@AmazonHelp Message from Rahul from Social Media team.
+Upon checking your order I see that issue is being handled by Executive Customer Relations team.",complaint_escalation,TRUE,,,0.85
+golden_0164,@AmazonHelp I have inked in detail at the given URL...hope to see some useful action,complaint_escalation,TRUE,,,0.85
+golden_0165,@AmazonHelp Or you can provide me with a direct dial number and I’ll call it now,other_spam_irrelevant,,,"borderline - contact request, no clean intent fit",0.9
+golden_0166,@AmazonHelp Excelente servicio! Recibí mis paquetes hace un par de minutos!,EXCLUDED_NON_ENGLISH,,,,0.93
+golden_0167,@AmazonHelp Yes,other_spam_irrelevant,,,"too short / mid-conversation with no visible context, genuinely hard to classify confidently",0.98
+golden_0168,@115821 STOP USING THE @118706 They are a useless government entity.,other_spam_irrelevant,,,borderline - complaint but no context on what happened,0.99
+golden_0169,@AmazonHelp こちらこそありがとうございました。,EXCLUDED_NON_ENGLISH,,,,0.97
+golden_0170,"@AmazonHelp いえいえ！
+問題解決しました！！助かりました、ありがとうございます(´；ω；｀)
+はい！これからもお世話になります〜🎶",EXCLUDED_NON_ENGLISH,,,,0.9
+golden_0171,@AmazonHelp Please call me,other_spam_irrelevant,,,"too short / mid-conversation with no visible context, genuinely hard to classify confidently",0.99
+golden_0172,@AmazonHelp Nah. Just answer my question please.,other_spam_irrelevant,,,"borderline - no visible context, mid-conversation reply",0.92
+golden_0173,"@AmazonHelp My package just got here. All good, thank you!",other_spam_irrelevant,,,,0.92
+golden_0174,WHAT DOES THIS MEAN @115821 https://t.co/jW02hoSsPp,other_spam_irrelevant,,,"too short / mid-conversation with no visible context, genuinely hard to classify confidently",0.92
+golden_0175,"@115850 Please revert whether you would be able to recalculate the gesture amount, revert at the earliest to settle this out of court for all mishap",refund_or_return,TRUE,"references settling 'out of court', potential legal/liability exposure",,0.85
+golden_0176,@AmazonHelp UPS supposed to pick up a return package yesterday and bring return label... never showed.,refund_or_return,TRUE,,,0.87
+golden_0177,@115830 amazonuk took money without any https://t.co/w25zXi7DYp they are not giving it back nor giving clear statement of my refund proces,refund_or_return,TRUE,,,0.92
+golden_0178,"@AmazonHelp yes i did,but amazonuk is not doing the refund process.if they do it .i will get the money",refund_or_return,TRUE,,,0.92
+golden_0179,"@AmazonHelp I would like it replaced not refunded. But the sale is over, and doesn’t look like you have it in stock at the site. What are my other options?",refund_or_return,TRUE,,,0.92
+golden_0180,@AmazonHelp Pago para tener el Prime con vosotros para que me tarden en llegar 10 dias? Reembolsadme la compra y lo compro en cualquier otro sitio,refund_or_return,TRUE,,,0.92
+golden_0181,"Ach schau an. Meine Bestellung war unzustellbar... @AmazonHelp, was ist da denn passiert? Bekomme ich mein Geld nun wieder?",refund_or_return,TRUE,,,0.92
+golden_0182,Erm @AmazonHelp I bought this item for £5.99... why am I only getting £1.67 back?! https://t.co/lb33bFOcW0,refund_or_return,TRUE,,,0.92
+golden_0183,@AmazonHelp What support team are you talking about ? I called twice n they make it sound like they will graciously refund my money. But then nothing,refund_or_return,TRUE,,,0.92
+golden_0184,"Worst experience in shopping no product no refund , been 40 days. F&amp;@694 it @115821",refund_or_return,TRUE,,,0.92
+golden_0185,@AmazonHelp Already started the return. UPS gets it from my doorstep tomorrow. Order 111-5014070-4118645,refund_or_return,TRUE,,,0.95
+golden_0186,"@AmazonHelp Hecho el procedimiento, lo que me interesa y exijo es que sea devuelto mi dinero puesto que jamás he adquirido algún articulo por este medio",refund_or_return,TRUE,,,0.97
+golden_0187,@115821 407-8406190-7752345. i want refund amount -1399/- amazon seller was lying. amazon custamare care side also.,refund_or_return,TRUE,,,0.96
+golden_0188,@AmazonHelp I called customer service and was told my membership wouldn't be renewed. I was just charged today. How do I get a refund? https://t.co/SeoQUsA0VA,refund_or_return,TRUE,,,0.99
+golden_0189,@AmazonHelp Was sent this item in 6x9 size. Trying to return &amp; UPS did not show up today. I'd keep item if I could get refund for price difference. https://t.co/G1a6por32Z,refund_or_return,TRUE,,,0.93
+golden_0190,"Haven't received my refund, it's been more than a week @115850",refund_or_return,TRUE,,,0.98
+golden_0191,@AmazonHelp And you guys have officially lost me as a customer. Was promised today...was never shipped. Give me my refund please so I may take my business else where. https://t.co/69tW0B5r9H,refund_or_return,TRUE,,,0.97
+golden_0192,@AmazonHelp Please don't help.u have very useless process of helping.if u want plz refund me atleast in time which is also now least expected,refund_or_return,TRUE,,,0.95
+golden_0193,"@AmazonHelp Order no - 403-7559101-5645129 
+Return reference - 710398288491
+Article name - puma shoes",refund_or_return,TRUE,,,0.92
+golden_0194,"@AmazonHelp Order no - 403-7559101-5645129 
+Return reference - 710398288491
+Article name - puma shoes",DUPLICATE,TRUE,,,0.97
